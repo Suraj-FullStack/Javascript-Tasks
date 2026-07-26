@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 10 Tasks</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .task {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .task h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        input,
+        select,
+        button {
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            max-width: 300px;
+            display: block;
+        }
+
+        button {
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        .output {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #006400;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>JavaScript 10 Tasks</h1>
+
+        <!-- Task 1 -->
+        <div class="task">
+            <h2>Task 1: Even or Odd</h2>
+            <input type="number" id="evenOddInput" placeholder="Enter a number">
+            <button onclick="checkEvenOdd()">Check</button>
+            <div class="output" id="evenOddOutput"></div>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="task">
+            <h2>Task 2: Positive, Negative or Zero</h2>
+            <input type="number" id="positiveNegativeInput" placeholder="Enter a number">
+            <button onclick="checkNumber()">Check</button>
+            <div class="output" id="positiveNegativeOutput"></div>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="task">
+            <h2>Task 3: Largest of Two Numbers</h2>
+            <input type="number" id="number1Task3" placeholder="Enter first number">
+            <input type="number" id="number2Task3" placeholder="Enter second number">
+            <button onclick="findLargestTwo()">Find Largest</button>
+            <div class="output" id="largestTwoOutput"></div>
+        </div>
+
+        <!-- Task 4 -->
+        <div class="task">
+            <h2>Task 4: Largest of Three Numbers</h2>
+            <input type="number" id="number1Task4" placeholder="Enter first number">
+            <input type="number" id="number2Task4" placeholder="Enter second number">
+            <input type="number" id="number3Task4" placeholder="Enter third number">
+            <button onclick="findLargestThree()">Find Largest</button>
+            <div class="output" id="largestThreeOutput"></div>
+        </div>
+
+        <!-- Task 5 -->
+        <div class="task">
+            <h2>Task 5: Pass or Fail</h2>
+            <input type="number" id="marksTask5" placeholder="Enter marks">
+            <button onclick="checkPassFail()">Check Result</button>
+            <div class="output" id="passFailOutput"></div>
+        </div>
+
+        <!-- Task 6 -->
+        <div class="task">
+            <h2>Task 6: Grade Calculator</h2>
+            <input type="number" id="marksTask6" placeholder="Enter marks">
+            <button onclick="calculateGrade()">Calculate Grade</button>
+            <div class="output" id="gradeOutput"></div>
+        </div>
+
+        <!-- Task 7 -->
+        <div class="task">
+            <h2>Task 7: Leap Year</h2>
+            <input type="number" id="yearInput" placeholder="Enter year">
+            <button onclick="checkLeapYear()">Check Year</button>
+            <div class="output" id="leapYearOutput"></div>
+        </div>
+
+        <!-- Task 8 -->
+        <div class="task">
+            <h2>Task 8: Calculator</h2>
+            <input type="number" id="calcNumber1" placeholder="Enter first number">
+            <select id="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
+            <input type="number" id="calcNumber2" placeholder="Enter second number">
+            <button onclick="calculate()">Calculate</button>
+            <div class="output" id="calculatorOutput"></div>
+        </div>
+
+        <!-- Task 9 -->
+        <div class="task">
+            <h2>Task 9: Voting Eligibility</h2>
+            <input type="number" id="ageInput" placeholder="Enter your age">
+            <button onclick="checkVotingEligibility()">Check Eligibility</button>
+            <div class="output" id="votingOutput"></div>
+        </div>
+
+        <!-- Task 10 -->
+        <div class="task">
+            <h2>Task 10: Login System</h2>
+            <input type="text" id="usernameInput" placeholder="Enter username">
+            <input type="password" id="passwordInput" placeholder="Enter password">
+            <button onclick="login()">Login</button>
+            <div class="output" id="loginOutput"></div>
+        </div>
+    </div>
+
+    <script>
+        // Task 1: Even or Odd
+        function checkEvenOdd() {
+            let number = Number(
+                document.getElementById("evenOddInput").value
+            );
+            let output = document.getElementById("evenOddOutput");
+            if (number % 2 === 0) {
+                output.textContent = "Even Number";
+            } else {
+                output.textContent = "Odd Number";
+            }
+        }
+
+        // Task 2: Positive, Negative or Zero
+        function checkNumber() {
+            let number = Number(
+                document.getElementById("positiveNegativeInput").value
+            );
+            let output = document.getElementById("positiveNegativeOutput");
+            if (number > 0) {
+                output.textContent = "Positive Number";
+            } else if (number < 0) {
+                output.textContent = "Negative Number";
+            } else {
+                output.textContent = "Zero";
+            }
+        }
+
+        // Task 3: Largest of Two Numbers
+        function findLargestTwo() {
+            let number1 = Number(
+                document.getElementById("number1Task3").value
+            );
+            let number2 = Number(
+                document.getElementById("number2Task3").value
+            );
+            let output = document.getElementById("largestTwoOutput");
+            if (number1 > number2) {
+                output.textContent = number1 + " is larger";
+            } else if (number2 > number1) {
+                output.textContent = number2 + " is larger";
+            } else {
+                output.textContent = "Both numbers are equal";
+            }
+        }
+
+        // Task 4: Largest of Three Numbers
+        function findLargestThree() {
+            let number1 = Number(
+                document.getElementById("number1Task4").value
+            );
+            let number2 = Number(
+                document.getElementById("number2Task4").value
+            );
+            let number3 = Number(
+                document.getElementById("number3Task4").value
+            );
+            let largest;
+            if (number1 >= number2 && number1 >= number3) {
+                largest = number1;
+            } else if (number2 >= number1 && number2 >= number3) {
+                largest = number2;
+            } else {
+                largest = number3;
+            }
+            document.getElementById("largestThreeOutput").textContent =
+                largest + " is the largest";
+        }
+
+        // Task 5: Pass or Fail
+        function checkPassFail() {
+            let marks = Number(
+                document.getElementById("marksTask5").value
+            );
+            let output = document.getElementById("passFailOutput");
+            if (marks >= 40) {
+                output.textContent = "Pass";
+            } else {
+                output.textContent = "Fail";
+            }
+        }
+
+        // Task 6: Grade Calculator
+        function calculateGrade() {
+            let marks = Number(
+                document.getElementById("marksTask6").value
+            );
+            let output = document.getElementById("gradeOutput");
+            if (marks >= 90 && marks <= 100) {
+                output.textContent = "Grade: A+";
+            } else if (marks >= 80 && marks <= 89) {
+                output.textContent = "Grade: A";
+            } else if (marks >= 70 && marks <= 79) {
+                output.textContent = "Grade: B+";
+            } else if (marks >= 60 && marks <= 69) {
+                output.textContent = "Grade: B";
+            } else if (marks >= 50 && marks <= 59) {
+                output.textContent = "Grade: C";
+            } else if (marks >= 40 && marks <= 49) {
+                output.textContent = "Grade: D";
+            } else if (marks >= 0 && marks < 40) {
+                output.textContent = "Fail";
+            } else {
+                output.textContent = "Invalid Marks";
+            }
+        }
+
+        // Task 7: Leap Year
+        function checkLeapYear() {
+            let year = Number(
+                document.getElementById("yearInput").value
+            );
+            let output = document.getElementById("leapYearOutput");
+            if (
+                year % 400 === 0 ||
+                (year % 4 === 0 && year % 100 !== 0)
+            ) {
+                output.textContent = "Leap Year";
+            } else {
+                output.textContent = "Not a Leap Year";
+            }
+        }
+
+        // Task 8: Calculator
+        function calculate() {
+            let number1 = Number(
+                document.getElementById("calcNumber1").value
+            );
+            let operator =
+                document.getElementById("operator").value;
+            let number2 = Number(
+                document.getElementById("calcNumber2").value
+            );
+            let result;
+            switch (operator) {
+                case "+":
+                    result = number1 + number2;
+                    break;
+                case "-":
+                    result = number1 - number2;
+                    break;
+                case "*":
+                    result = number1 * number2;
+                    break;
+                case "/":
+                    if (number2 === 0) {
+                        document.getElementById("calculatorOutput")
+                            .textContent =
+                            "Cannot divide by zero";
+                        return;
+                    }
+                    result = number1 / number2;
+                    break;
+                case "%":
+                    result = number1 % number2;
+                    break;
+            }
+            document.getElementById("calculatorOutput")
+                .textContent = result;
+        }
+
+        // Task 9: Voting Eligibility
+        function checkVotingEligibility() {
+            let age = Number(
+                document.getElementById("ageInput").value
+            );
+            let output = document.getElementById("votingOutput");
+            if (age >= 18) {
+                output.textContent = "Eligible";
+            } else {
+                output.textContent = "Not Eligible";
+            }
+        }
+
+        // Task 10: Login System
+        function login() {
+            let username =
+                document.getElementById("usernameInput").value;
+            let password =
+                document.getElementById("passwordInput").value;
+            let output = document.getElementById("loginOutput");
+            if (
+                username === "admin" &&
+                password === "12345"
+            ) {
+                output.textContent = "Login Successful";
+            } else {
+                output.textContent =
+                    "Invalid Username or Password";
+            }
+        }
+    </script>
+</body>
+</html>
+
